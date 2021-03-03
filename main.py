@@ -5,7 +5,11 @@ graph = {'A': 'BCE',
          'E': 'ABD',
          'F': 'C',
          'G': 'C'}
-
+def fib(n, mem):
+    if n >= len(mem):
+        mem.append(fib(n-2, mem) + fib(n-1, mem))
+    return mem[n]
+print(fib(5,[1,1]))
 def bfs(graph, src, tar):
     q = [src]
     e = []
