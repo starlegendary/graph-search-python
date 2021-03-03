@@ -44,6 +44,23 @@ def new_bfs(graph, src, tar):
       tonext.pop(currpath)
       #get rid of the curr path
     return None
+def new_bfs2(graph, src, tar):
+    allpath = ['']
+    allnode = [src]
+    explored = []
+    while(allnode!=[]):
+
+        allnext = allnode.pop(0)
+        currpath = allpath.pop(0)
+        for nextnode in allnext:
+            if nextnode not in explored:
+                nextpath = currpath+nextnode
+                if nextnode == tar:
+                    return nextpath
+                allpath.append(nextpath)
+                allnode.append(graph[nextnode])
+                explored.append(nextnode)
+    return None
 def dfs(graph, src, tar):
     q = [src]
     e = []
