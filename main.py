@@ -19,6 +19,27 @@ def bfs(graph, src, tar):
                   return currpath + nextnode
               q.append(currpath + nextnode)
     return None
+
+
+def new_bfs(graph, src, tar):
+    currpath = src #all path include the starting node
+    explored = src #explored node as string
+    tonext = {currpath:graph[src[-1]]} 
+    #tonext = {path: all next node}
+    while tonext!= {}:
+      currpath = next(iter(tonext))
+      #get first element in tonext
+      for nextnode in tonext[currpath]:
+          if nextnode not in explored:
+              if nextnode == tar:
+                  return currpath + nextnode
+              tonext[currpath+nextnode] = graph[nextnode]
+              #add all future move of newpath to tonext
+              explored += nextnode
+              #as nextnode not equal to tar, thus explored
+      tonext.pop(currpath)
+      #get rid of the curr path
+    return None
 def dfs(graph, src, tar):
     q = [src]
     e = []
