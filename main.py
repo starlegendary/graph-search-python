@@ -61,6 +61,14 @@ def new_bfs2(graph, src, tar):
                 allnode.append(graph[nextnode])
                 explored.append(nextnode)
     return None
+def dfs(e, graph, curr):
+    print(e)
+    if curr not in e: #check if the curr node is explored
+        e.append(curr) #if not add it to visited
+        for neighbour in graph[curr]:#check its neighbour
+            dfs(e, graph, neighbour)
+    if(len(e) == len(graph)): return " -> ".join(e) 
+    #check if all are visited
 def dfs(graph, src, tar):
     q = [src]
     e = []
